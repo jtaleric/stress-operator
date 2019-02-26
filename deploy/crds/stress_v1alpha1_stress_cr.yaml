@@ -1,0 +1,7 @@
+apiVersion: stress.example.com/v1alpha1
+kind: Stress
+metadata:
+  name: example-stress
+spec:
+  # Add fields here
+  size: 3
