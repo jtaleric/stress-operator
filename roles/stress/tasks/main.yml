@@ -1,2 +1,24 @@
 ---
-# tasks file for stress
+- name: start stress
+  k8s:
+    definition:
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: '{{ meta.name }}-stress'
+        namespace: '{{ meta.namespace }}'
+      spec:
+        replicas: "{{size}}"
+        selector:
+          matchLabels:
+            app: stress 
+        template:
+          metadata:
+            labels:
+              app: stress 
+          spec:
+            containers:
+            - name: stress 
+              image: "docker.io/polinux/stress-ng:latest"
+              command: ["/bin/sh"] 
+              args: ["-c", "while true; do echo Starting Stress : CPU={{ cpu }} MEM={{ mem }} IO={{ io }};stress-ng --cpu {{ cpu }} --memcpy {{ mem }} --io {{ io }} --timeout 60s --metrics-brief; done"]

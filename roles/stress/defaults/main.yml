@@ -1,2 +1,5 @@
 ---
-# defaults file for stress
+size: 1
+cpu: 1
+mem: 1
+io: 1

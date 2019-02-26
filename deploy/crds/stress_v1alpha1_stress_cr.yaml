@@ -3,5 +3,7 @@ kind: Stress
 metadata:
   name: example-stress
 spec:
-  # Add fields here
   size: 3
+  cpu: 3
+  mem: 1
+  io: 1
